@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Poppins:400,500,600" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/Content/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/Content/style.css" type="text/css" />
+    <link rel="stylesheet" href="/Content/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="/Content/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="/Content/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="/Content/css/magnific-popup.css" type="text/css" />
+
+    <!-- DatePicker CSS -->
+    <link rel="stylesheet" href="/Content/css/components/datepicker.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Property Form</title>
+
+    <style>
+        #content,
+        #header,
+        #header-wrap {
+            background-color: #C9D6CF;
+        }
+
+        #booking-registration .list-group a {
+            background-color: transparent;
+            border-radius: 0;
+            border: 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: 'Poppins', sans-serif;
+            transition: all .2s ease;
+        }
+
+        .dark #booking-registration .list-group a {
+            background-color: transparent;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dark #booking-registration .list-group a.active {
+            border-bottom-color: #FFB701;
+            color: #FFB701;
+        }
+
+        .dark #booking-registration .list-group a.active~a {
+            color: #FFF;
+            border-bottom-color: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        #booking-registration label:not(.custom-control-label) {
+            text-transform: none;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-align: left;
+        }
+
+        #booking-registration input.border-form-control,
+        #booking-registration select.border-form-control,
+        #booking-registration .border-form-control {
+            padding-left: 0;
+            background-color: transparent !important;
+            border: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 0 !important;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #booking-registration textarea.border-form-control {
+            resize: none;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .dark #booking-registration .border-form-control:not(.not-dark) {
+            border-bottom-color: rgba(255, 255, 255, 0.4);
+            color: #FFF !important;
+        }
+
+        .dark #booking-registration .border-form-control:not(.not-dark):focus,
+        .dark #booking-registration .border-form-control:not(.not-dark):active {
+            border-bottom-color: rgba(255, 255, 255, 1) !important;
+        }
+
+        #booking-registration button {
+            background-color: #FFB701;
+        }
+
+        .fcolor {
+            color: #FFB701 !important;
+        }
+
+        #booking-registration .list-group-item.active {
+            background-color: #FFF;
+        }
+
+        #booking-registration .list-group-item:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        #booking-registration .list-group-item.active h4,
+        #booking-registration .list-group-item.active h3 {
+            color: #062639;
+        }
+    </style>
+
+
+</head>
+
+<body class="stretched">
+
+
+    <style>
+        .list-group-item {
+            padding: 10px 10px;
+        }
+
+        #content,
+        #header,
+        #header-wrap {
+            background-color: white;
+        }
+    </style>
+    <link href="/Content/admin/lib/fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="/Content/css/drag-drop-image-uploader/dist/image-uploader.min.css" rel="stylesheet" />
+    <!-- Document Wrapper
+============================================= -->
+    <div id="wrapper" class="clearfix">
+        <section id="content">
+            <div class="content-wrap">
+                <div class="container clearfix">
+                    <div class="center aside-logo">
+                        <img src="/Content/images/logo1.png" style=" width: 250px; margin-bottom: 20px;" />
+                    </div>
+                    <h3 class="center">Property Form</h3>
+                    <div class="card border-0 shadow-lg rounded-lg" style="background-color: #062639;">
+                        <div class="card-body dark">
+                            <div class="form-widget" data-alert-type="inline">
+                                <div class="form-result"></div>
+                                <form action="" class="row mb-0" encType="multipart/form-data" id="booking-registration" method="post" name="booking-registration">
+                                    <input id="inputId" type="hidden" name="Id" />
+
+                                    <div class="form-process"></div>
+
+                                    <div class="col-12 bottommargin">
+                                        <div id="tab-reservation" class="list-group list-group-horizontal d-flex justify-content-center" role="tablist">
+                                            <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3 active" data-toggle="list" href="#tab-region" role="tab"><span class="d-none d-md-block">1. Region</span><span class="d-block d-md-none"><i class="fa fa-building"></i></span></a>
+                                            <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3" data-toggle="list" href="#tab-address" role="tab"><span class="d-none d-md-block">2. Address</span><span class="d-block d-md-none"><i class="fa fa-home"></i></span></a>
+                                            <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3" data-toggle="list" href="#tab-details" role="tab"><span class="d-none d-md-block">3. Details</span><span class="d-block d-md-none"><i class="fa fa-info"></i></span></a>
+                                            <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3 " data-toggle="list" href="#tab-documents" role="tab"><span class="d-none d-md-block">4. Documents</span><span class="d-block d-md-none"><i class="fa fa-file"></i></span></a>
+                                            <a class="list-group-item list-group-item-action w-auto mx-0 mx-sm-3" data-toggle="list" href="#tab-images" role="tab"><span class="d-none d-md-block">5. Images</span><span class="d-block d-md-none"><i class="fa fa-images"></i></span></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mt-4 mt-lg-0">
+                                        <div class="tab-content" id="nav-tabContent">
+
+                                            <div class="tab-pane fade  show active" id="tab-region" role="tabpanel" aria-labelledby="tab-region">
+                                                <div class="row">
+                                                    <div class="input-daterange travel-date-group col-12 bottommargin-sm">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-12 col-xl-4">
+                                                                <label>Select Region:</label>
+                                                                <select class="sm-form-control border-form-control required" name="RegionId" id="txRegion">
+                                                            </select>
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-12 col-xl-4">
+                                                                <label>Select Sub Region:</label>
+                                                                <select class="sm-form-control border-form-control required" name="SubRegionId" id="txSubRegion">
+                                                            </select>
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-12 col-xl-4">
+                                                                <label>Select Taluka:</label>
+                                                                <select class="sm-form-control border-form-control required" name="TalukaId" id="txTaluka">
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <a href="#" class="button button-light bg-white tab-action-btn-next text-dark float-right"><i class="fa fa-map-marker-alt"> </i> Add Location</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Name:</label>
+                                                        <input type="text" name="CustomerName" id="txCustomerName" class="sm-form-control border-form-control required" value="" placeholder="Enter  Name">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Email:</label>
+                                                        <input type="email" name="CustomerEmail" id="txCustomerEmail" class="sm-form-control border-form-control required" value="" placeholder="Enter Email">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Mobile No:</label>
+                                                        <input type="number" name="CustomerMobileNo" id="txCustomerMobileNo" class="sm-form-control border-form-control required" value="" placeholder="Enter Mobile No.">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Location Name:</label>
+                                                        <input type="text" name="LocationName" id="txLocationName" class="sm-form-control border-form-control required" value="" placeholder="Enter Location Name">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Bldg Name:</label>
+                                                        <input type="text" name="BuildingName" id="txBuildingName" class="sm-form-control border-form-control required" value="" placeholder="Enter Building Name">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Street Name:</label>
+                                                        <input type="text" name="StreetName" id="txStreetName" class="sm-form-control border-form-control required" value="" placeholder="Enter Street Name">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Town:</label>
+                                                        <input type="text" name="Town" id="txTown" class="sm-form-control border-form-control" value="" placeholder="Enter Town">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>City or region:</label>
+                                                        <input type="text" name="City" id="txCity" class="sm-form-control border-form-control" value="" placeholder="Enter City/Region">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Landmark:</label>
+                                                        <input type="text" name="Landmark" id="txLandmark" class="sm-form-control border-form-control" value="" placeholder="Enter Landmark">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Pincode:</label>
+                                                        <input type="number" name="Pincode" id="txPincode" class="sm-form-control border-form-control" value="" placeholder="Enter Pincode">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Other details:</label>
+                                                        <input type="text" name="Others" id="txOthers" class="sm-form-control border-form-control" value="" placeholder="Enter Others">
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <a href="#" class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-right">Next</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="tab-details" role="tabpanel" aria-labelledby="tab-details">
+                                                <div class="row">
+                                                    <div class="col-12 mb-4">
+                                                        <label>Rent per month?</label>
+                                                        <input type="number" name="ProposedRent" id="txProposedRent" class="sm-form-control border-form-control required" value="" placeholder="Enter your proposedrent?">
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsNegotiable" id="txIsNegotiable-yes" value="yes" class="valid"> Negotiable
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsNegotiable" id="txIsNegotiable-no" value="no" class="valid"> Non-Negotiable
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Size of the shop (Carpet in Sqft)?</label>
+                                                        <input type="text" name="ShopCarpetSize" id="txShopCarpetSize" class="sm-form-control border-form-control" value="" placeholder="Enter Your carpet area in Sqft">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Shop Front Size(In Feet)?</label>
+                                                        <select class="sm-form-control border-form-control" name="ShopFrontSize" id="txShopFrontSize">
+                                                        <option value="">Select</option>
+                                                        <option value="25-30+">25-30+</option>
+                                                        <option value="20-25">20-25</option>
+                                                        <option value="15-20">15-20</option>
+                                                        <option value="10-15">10-15</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>No. of steps?</label>
+                                                        <select class="sm-form-control border-form-control" name="Steps" id="txSteps">
+                                                        <option value="">Select</option>
+                                                        <option value="0-2">0-2</option>
+                                                        <option value="3-4">3-4</option>
+                                                        <option value="5-6">5-6</option>
+                                                        <option value="6+">6+</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Floor</label>
+                                                        <input type="text" name="Floor" id="txFloor" class="sm-form-control border-form-control" value="" placeholder="Floors Ex.Basement, Ground .....">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Total Floors</label>
+                                                        <input type="text" name="TotalFloor" id="txTotalFloor" class="sm-form-control border-form-control" value="" placeholder="No. of Floors Ex. 1 to 10">
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Flooring/Tile status?</label>
+                                                        <select class="sm-form-control border-form-control" name="FlooringTileStatus" id="txFlooringTileStatus">
+                                                        <option value="">Select</option>
+                                                        <option value="Need to change">Need to change</option>
+                                                        <option value="As it is">As it is</option>
+                                                    </select>
+                                                    </div>
+
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Loft/Basement carpet area (in Sqft)?</label>
+                                                        <select class="sm-form-control border-form-control" name="LoftBasementCarpetArea" id="txLoftBasementCarpetArea">
+                                                        <option value="">Select</option>
+                                                        <option value="Loft">Loft</option>
+                                                        <option value="Basement">Basement</option>
+                                                        <option value="Both">Both</option>
+                                                        <option value="NA">NA</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Status of Building?</label>
+                                                        <select class="sm-form-control border-form-control" name="BuidlingStatus" id="txBuidlingStatus">
+                                                        <option value="">Select</option>
+                                                        <option value="Modern skyrice">Modern skyrice</option>
+                                                        <option value="Old resident">Old resident</option>
+                                                        <option value="Market old commercial">Market old commercial</option>
+                                                        <option value="Baithi chawl">Baithi chawl</option>
+                                                        <option value="Stand alone building">Stand alone building</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Signboard Space Length (In Feet)?</label>
+                                                        <select class="sm-form-control border-form-control" name="SignboardSpaceLength" id="txSignboardSpaceLength">
+                                                        <option value="">Select</option>
+                                                        <option value="25-30">25-30</option>
+                                                        <option value="20-25">20-25</option>
+                                                        <option value="15-20">15-20</option>
+                                                        <option value="10-15">10-15</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Signboard Space Height(In Feet)?</label>
+                                                        <select class="sm-form-control border-form-control" name="SignboardSpaceHeight" id="txSignboardSpaceHeight">
+                                                        <option value="">Select</option>
+                                                        <option value="3.5 - 4">3.5 - 4</option>
+                                                        <option value="4 - 4.5">4 - 4.5</option>
+                                                        <option value="Other">Other</option>
+                                                        <option value="NA">NA</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-xl-4 mb-4">
+                                                        <label>Location of AC Outdoor Units?</label>
+                                                        <select class="sm-form-control border-form-control" name="LocationOutdoorUnit" id="txLocationOutdoorUnit">
+                                                        <option value="">Select</option>
+                                                        <option value="Back side">Back side</option>
+                                                        <option value="Side wall">Side wall</option>
+                                                        <option value="Top">Top</option>
+                                                        <option value="Front">Front</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Parking Sapce?</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsParkingSpace" id="txIsParkingSpace-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsParkingSpace" id="txIsParkingSpace-no" value="no" class="valid"> No
+                                                            </label>
+                                                                <label class="btn btn-outline-warning ls0 nott active">
+                                                                <input type="radio" name="IsParkingSpace" id="txIsParkingSpace-common" value="common" class="valid"> Common
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Other area (min 100-150 sq Feet carpet)?</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsOtherArea" id="txIsOtherArea-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsOtherArea" id="txIsOtherArea-no" value="no" class="valid"> No
+                                                            </label>
+                                                                <label class="btn btn-outline-warning ls0 nott active">
+                                                                <input type="radio" name="IsOtherArea" id="txIsOtherArea-na" value="na" class="valid"> NA
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Water Connection?</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsWaterConnection" id="txIsWaterConnection-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsWaterConnection" id="txIsWaterConnection-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Toilet Available?</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsToiletAvailable" id="txIsToiletAvailable-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsToiletAvailable" id="txIsToiletAvailable-no" value="no" class="valid"> No
+                                                            </label>
+                                                                <label class="btn btn-outline-warning ls0 nott active">
+                                                                <input type="radio" name="IsToiletAvailable" id="txIsToiletAvailable-common" value="common" class="valid"> Common
+                                                            </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Near By (Landmark)?</label>
+                                                        <select class="sm-form-control border-form-control" name="NearByLandmark" id="txNearByLandmark">
+                                                        <option value="">Select</option>
+                                                        <option value="Bus stop">Bus stop</option>
+                                                        <option value="Railway station">Railway station</option>
+                                                        <option value="Signal">Signal</option>
+                                                        <option value="Shopping complex">Shopping complex</option>
+                                                    </select>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Others</label>
+                                                        <input type="text" name="OtherDetails" id="txOtherDetails" class="sm-form-control border-form-control" value="" placeholder="Other">
+                                                    </div>
+                                                    <div class="col-12 mb-4">
+                                                        <label>Enter your remark for the location</label>
+                                                        <input type="text" name="RemarkForLocation" id="txRemarkForLocation" class="sm-form-control border-form-control" value="" placeholder="Remark for this location">
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <a href="#" class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-right">Next</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="tab-documents" role="tabpanel" aria-labelledby="tab-documents">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h4>KYC Documents</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Pan Card</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsPanCard" id="txIsPanCard-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsPanCard" id="txIsPanCard-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsPanCardRemark" id="txIsPanCardRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Aadhar Card</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsAadharCard" id="IsAadharCard-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsAadharCard" id="IsAadharCard-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsAadharCardRemark" id="txIsAadharCardRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Cancelled Cheque</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsCancelledCheque" id="txIsCancelledCheque-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsCancelledCheque" id="txIsCancelledCheque-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsCancelledChequeRemark" id="txIsCancelledChequeRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h4>Ownership Documents</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Agreement of Sale/Purchase Owner Details</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsSalePurchase" id="txIsSalePurchase-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsSalePurchase" id="txIsSalePurchase-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsSalePurchaseRemark" id="txIsSalePurchaseRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Partnership Deed (in case of partnership firm)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsPartnershipDeep" id="txIsPartnershipDeep-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsPartnershipDeep" id="txIsPartnershipDeep-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsPartnershipDeepRemark" id="txIsPartnershipDeepRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Board Resolution (in case of Company)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsBoardResolution" id="txIsBoardResolution-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsBoardResolution" id="txIsBoardResolution-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsBoardResolutionRemark" id="txIsBoardResolutionRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Share Certificate (in case of Society)(if Appplication)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsShareCertificate" id="txIsShareCertificate-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsShareCertificate" id="txIsShareCertificate-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsShareCertificateRemark" id="txIsShareCertificateRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Property Card or 7/12 extract</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsPropertyCard" id="txIsPropertyCard-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsPropertyCard" id="txIsPropertyCard-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsPropertyCardRemark" id="txIsPropertyCardRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h4>Structural Documents</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Occupancy Certificate</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsOccupancyCertificate" id="txIsOccupancyCertificate-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsOccupancyCertificate" id="txIsOccupancyCertificate-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsOccupancyCertificateRemark" id="txIsOccupancyCertificateRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Completion Certificate</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsCompletionCertificate" id="txIsCompletionCertificate-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsCompletionCertificate" id="txIsCompletionCertificate-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsCompletionCertificateRemark" id="txIsCompletionCertificateRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Commencement Certificate and Approvad Sanction (Mandatory)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsCommencementCertificate" id="txIsCommencementCertificate-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsCommencementCertificate" id="txIsCommencementCertificate-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsCommencementCertificateRemark" id="txIsCommencementCertificateRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Property Assessment Bill (check if unauthorised)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsPropertyAssessment" id="txIsPropertyAssessment-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsPropertyAssessment" id="txIsPropertyAssessment-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsPropertyAssessmentRemark" id="txIsPropertyAssessmentRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h4>Other Documents</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Letter of Intent</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsLetterIntent" id="txIsLetterIntent-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsLetterIntent" id="txIsLetterIntent-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsLetterIntentRemark" id="txIsLetterIntentRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Society/Builder/Owner NOC</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsNOC" id="txIsNOC-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsNOC" id="txIsNOC-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsNOCRemark" id="txIsNOCRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Electricity Bill</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsElectricityBill" id="txIsElectricityBill-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsElectricityBill" id="txIsElectricityBill-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsElectricityBillRemark" id="txIsElectricityBillRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Maintainance Bill (in case of society)</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsMaintainanceBill" id="txIsMaintainanceBill-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsMaintainanceBill" id="txIsMaintainanceBill-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsMaintainanceBillRemark" id="txIsMaintainanceBillRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <h4>Deviatation Letter</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-xl-4 mb-4">
+                                                        <label>Property Owner</label>
+                                                        <div class="form-group" style="padding-top:10px;">
+                                                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                                                <label class="btn btn-outline-success ls0 nott">
+                                                                <input type="radio" name="IsPropertyOwner" id="txIsPropertyOwner-yes" value="yes" class="valid"> Yes
+                                                            </label>
+                                                                <label class="btn btn-outline-danger ls0 nott active">
+                                                                <input type="radio" name="IsPropertyOwner" id="txIsPropertyOwner-no" value="no" class="valid"> No
+                                                            </label>
+                                                            </div>
+                                                            <input type="text" style="padding-top:15px;" name="IsPropertyOwnerRemark" id="txIsPropertyOwnerRemark" class="sm-form-control border-form-control" value="" placeholder="Remark">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <a href="#" class="button button-rounded button-light bg-white tab-action-btn-next text-dark float-right">Next</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="tab-images" role="tabpanel" aria-labelledby="tab-images">
+                                                <div class="row">
+                                                    <div class="col-12 form-group">
+                                                        <label for="input-images1">Property Title<small> Only one picture.</small></label>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-images1"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 form-group">
+                                                        <label for="input-images2">Property Gallery</label>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-images2"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 form-group">
+                                                        <label for="input-images2">Floor Plan</label>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="input-images3"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button id="btnSave" type="submit" class="button button-rounded button-light bg-white text-dark float-right">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- #content end -->
+    </div>
+    <!-- #wrapper end -->
+    <!-- Go To Top
+============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+
+
+
+    <!-- External JavaScripts
+    ============================================= -->
+    <script src="/Content/js/jquery.js"></script>
+    <script src="/Content/js/plugins.min.js"></script>
+
+    <!-- DatePicker JS -->
+    <script src="/Content/js/components/datepicker.js"></script>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script src="/Content/js/functions.js"></script>
+
+
+    <script src="/Content/admin/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="/Content/css/drag-drop-image-uploader/dist/image-uploader.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            GetRegion();
+
+            $('.input-images1').imageUploader({
+                imagesInputName: "MainImage",
+                label: 'Drag & Drop files here or click to browse',
+                extensions: ['.jpg', '.jpeg', '.png', '.gif', ".jfif"],
+                mimes: ['image/jpeg', 'image/png', 'image/gif'],
+                maxFiles: 1
+            });
+
+            $('.input-images2').imageUploader({
+                imagesInputName: "GalleryImage",
+                label: 'Drag & Drop files here or click to browse',
+                extensions: ['.jpg', '.jpeg', '.png', '.gif', ".jfif"],
+                mimes: ['image/jpeg', 'image/png', 'image/gif'],
+                maxFiles: 10
+            });
+
+            $('.input-images3').imageUploader({
+                imagesInputName: "FloorPlanImage",
+                label: 'Drag & Drop files here or click to browse',
+                extensions: ['.jpg', '.jpeg', '.png', '.gif', ".jfif"],
+                mimes: ['image/jpeg', 'image/png', 'image/gif'],
+                maxFiles: 10
+            });
+
+            $('.tab-action-btn-next').click(function(e) {
+                let elementTab = $(this).parents('.tab-pane');
+                $('#booking-registration').valid();
+                let errors = elementTab.find('.required.error').length;
+                if (errors > 0) {
+                    $('#tab-reservation > .active').nextAll('a').addClass('disabled');
+                    return false;
+                } else {
+                    $('#tab-reservation > .active').next('a').removeClass('disabled').trigger('click');
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            $("#booking-registration").on("submit", function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                var imageList = $("input[type=file]");
+                for (var i = 0; i < imageList[0].files.length; i++) {
+                    var file = imageList[0].files[i];
+                    formData.append("MainImage", file);
+                }
+
+                for (var i = 0; i < imageList[1].files.length; i++) {
+                    var file = imageList[1].files[i];
+                    formData.append("GalleryImage", file); //Use [] to add multiple.
+                }
+
+                for (var i = 0; i < imageList[2].files.length; i++) {
+                    var file = imageList[2].files[i];
+                    formData.append("FloorPlanImage", file); //Use [] to add multiple.
+                }
+
+                swal({
+                    title: "Processing Request",
+                    text: "We are processing your request. Please wait...",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                    closeOnEsc: false
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Enquiry/Property/AddOrUpdate',
+                    dataType: "JSON",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        if (result.IsError) {
+                            swal.close();
+                            swal("Unable to Submit the reuqest", result.Message, "error");
+                        } else {
+                            swal.close();
+                            swal(result.Message)
+                                .then((value) => {
+                                    location.reload();
+                                });
+                        }
+                    }
+                });
+            });
+        });
+
+        function GetRegion() {
+            $.ajax({
+                url: "/Enquiry/Property/GetDistrict",
+                type: "GET",
+                success: function(dataSet) {
+                    var htm = " <option>Select Region</option>";
+                    $.each(dataSet, function(key, value) {
+                        htm += "<option value='" + value.Id + "'>" + value.Name + "</option>";
+                    });
+                    $("#txRegion").html($(htm));
+                }
+            });
+        }
+
+        $("#txRegion").change(function() {
+            $.ajax({
+                url: "/Enquiry/Property/GetSubDistrict?districtId=" + $('#txRegion').val(),
+                type: "GET",
+                success: function(dataSet) {
+                    var htm = " <option>Select Sub-Region</option>";
+                    $.each(dataSet, function(key, value) {
+                        htm += "<option value='" + value.Id + "'>" + value.Name + "</option>";
+                    });
+                    $("#txSubRegion").html($(htm));
+                }
+            });
+        });
+
+        $("#txSubRegion").change(function() {
+            $.ajax({
+                url: "/Enquiry/Property/GetTaluka?subDistrictId=" + $('#txSubRegion').val(),
+                type: "GET",
+                success: function(dataSet) {
+                    var htm = " <option>Select Taluka</option>";
+                    $.each(dataSet, function(key, value) {
+                        htm += "<option value='" + value.Id + "'>" + value.Name + "</option>";
+                    });
+                    $("#txTaluka").html($(htm));
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
